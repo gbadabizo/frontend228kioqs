@@ -1,0 +1,53 @@
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+     <div class="row">
+        <div class="col-sm-12">
+              <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between bg-success">
+                       <div class="iq-header-title">
+                          <h4 class="card-title text-white"> <i class="ri-list-ordered"></i> Liste des agences</h4>
+                       </div>
+                    </div>
+                    <div class="iq-card-body bg-light">
+
+                       <div class="table-responsive">
+                          <table id="datatable" class="table table-striped table-bordered">
+                   <thead>
+                       <tr>
+                           <th>Nom</th>
+                           <th>Code</th>
+                           <th>Description</th>
+                           <th>Periodicité</th>
+                           <th>Prix Unit(FCFA)</th>
+                           <th>telephone</th>
+                           <th>Action</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr *ngFor="let agence of agences" >
+                           <td>{{agence.nom}}</td>
+                           <td>{{agence.code}}</td>
+                           <td width="15%">{{agence.description}}</td>
+                           <td>{{agence.periodicite}}</td>
+                           <td>{{agence.prixUnit}}</td>
+                           <td>{{agence.telephone1 +'/'+agence.telephone2}}</td>
+                          <td>
+                            <a href="/add-parution/{{agence.idagence}}" class="btn btn-primary" style="margin-right:5px;"><i class="ri-add-circle-line"></i> ajouter Parution </a>
+                            <a href="/parutions/{{agence.idagence}}" class="btn btn-secondary" style="margin-right:5px;"><i class="ri-list-unordered"></i> Parutions </a>
+                            <a href="/abonnements/{{agence.idagence}}" class="btn btn-default" style="margin-right:5px;"><i class="fa fa-hourglass-half" aria-hidden="true"></i> Abonnements </a>
+                            <a href="" class="btn btn-info" style="margin-right:5px;"><i class="ri-pencil-line" ></i></a>
+                            <a href="" class="btn btn-danger" style="margin-right:5px;"><i class="ri-delete-bin-2-line"></i> </a>
+                          </td>
+                       </tr>
+
+                   </tbody>
+
+               </table>
+                       </div>
+                    </div>
+                 </div>
+        </div>
+     </div>
+
+  </div>
+</div>

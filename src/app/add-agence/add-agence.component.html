@@ -1,0 +1,98 @@
+<div id="content-page" class="content-page">
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-12 col-lg-12">
+    <div *ngIf="isSuccessful" class="alert text-white bg-success" role="alert">
+      <div class="iq-alert-text"> <b>Enregistrement effectué avec succès</b> </div>
+   </div>
+   <div *ngIf="isFaillure" class="alert text-white bg-danger" role="alert">
+    <div class="iq-alert-text"> <b>Echec d'enregistrement</b> </div>
+ </div>
+     <div class="iq-card">
+        <div class="iq-card-header d-flex justify-content-between bg-success">
+           <div class="iq-header-title">
+              <h4 class="card-title text-white"><i class="ri-add-box-line"></i>  Enregistrement d'une agence</h4>
+           </div>
+        </div>
+        <div class="iq-card-body bg-light">
+           <p class="text-white">On renseigne les informations de paramétrage de l'agence</p>
+           <form [formGroup]="addAgenceForm" (ngSubmit)="onSubmit()">
+              <div class="form-row">
+                 <div class="col-md-6 mb-3">
+                    <label for="validationDefault01">Nom<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="validationDefault01"  [formControlName]="'nom'">
+                 </div>
+                 <div class="col-md-6 mb-3">
+                    <label for="validationDefault02">code</label>
+                    <input type="text" class="form-control" readonly id="validationDefault02" [formControlName]="'code'">
+                 </div>
+                 <div class="col-md-6 mb-3">
+                  <label for="validationDefault01">Details Activité</label>
+                  <input type="text" class="form-control" id="validationDefault07" [formControlName]="'description'">
+               </div>
+               <div class="col-md-6 mb-3">
+                  <label for="validationDefault02">Adresse</label>
+                  <input type="text" class="form-control" id="validationDefault08"  [formControlName]="'adresse'">
+               </div>
+                 <div class="col-md-6 mb-3">
+                    <label for="validationDefaultUsername">Email</label>
+                    <div class="input-group">
+                       <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                       </div>
+                       <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" [formControlName]="'email'">
+                    </div>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                    <label for="validationDefault03">Telephone Bureau <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="validationDefault03" [formControlName]="'telephone1'">
+                 </div>
+                 <div class="col-md-3 mb-3">
+                  <label for="validationDefault03">telephone Portable</label>
+                  <input type="text" class="form-control" id="validationDefault09" [formControlName]="'telephone2'">
+               </div>
+                 <div class="col-md-3 mb-3">
+                    <label for="validationDefault04">Categorie<span class="text-danger">*</span></label>
+                    <select class="custom-select" id="validationDefault04" [formControlName]="'idCategorie'">
+                       <option selected="" disabled="" value="">Selectionner la categorie</option>
+                       <option *ngFor="let c of categories ; " [value]="c.idcategorie">
+                        {{c.libelle}}
+                      </option>
+                    </select>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                  <label for="validationDefault04">Periodicité<span class="text-danger">*</span></label>
+                  <select class="custom-select" id="validationDefault04" [formControlName]="'periodicite'">
+                     <option selected="" disabled="" value="">Selectionner la periodicité</option>
+                     <option value="quotitien">Quotidien</option>
+                     <option value="bihebdomadaire">Bihebdomadaire</option>
+                     <option value="hebdomadaire">Hebdomadaire</option>
+                     <option value="bimensuel">Bimensuel</option>
+                     <option value="mensuel">Mensuel</option>
+                     <option value="bitrimestriel">bitrimestriel</option>
+                     <option value="trimestriel">Trimestriel</option>
+                     <option value="semestriel">semestriel</option>
+                  </select>
+               </div>
+                 <div class="col-md-2 mb-1">
+                    <label for="validationDefault05">prix Unitaire<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="validationDefault05" [formControlName]="'prixUnit'">
+                 </div>
+                 <div class="col-md-2 mb-1">
+                  <label for="validationDefault05">N°Tmoney</label>
+                  <input type="text" class="form-control" id="validationDefault10"[formControlName]="'numTmoney'">
+               </div><div class="col-md-2 mb-1">
+                <label for="validationDefault05">N°Flooz</label>
+                <input type="text" class="form-control" id="validationDefault10" [formControlName]="'numFlooz'">
+             </div>
+              </div>
+              <div class="form-group">
+                 <button class="btn btn-success" type="submit" [disabled]="!addAgenceForm.valid"><i class="ri-save-line"></i> Enregistrer</button>
+              </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>
+</div>
+</div>

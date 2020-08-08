@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "frontend228kioqs"
+    }
+  },
+  "defaultProject": "frontend228kioqs",
+  "cli": {
+    "analytics": false
+  }
 }

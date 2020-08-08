@@ -1,0 +1,61 @@
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+     <div class="row">
+        <div class="col-sm-12">
+          <div  *ngIf="isfaillure"  class="alert text-white bg-danger" role="alert">
+            <div class="iq-alert-text">Erreur !!!!! information introuvable</div>
+         </div>
+              <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between bg-success">
+                       <div class="iq-header-title">
+                          <h4 class="card-title text-white"> <i class="ri-list-ordered"></i> Details de la parution N° {{parution.numParution}}</h4>
+                       </div>
+                    </div>
+
+                    <div class="iq-card-body">
+                      <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">Agence :  {{parution.libelleAgence}}</h4>
+
+                           </div>
+                           <p  *ngIf="parution.validated==0" style="text-align: right;"><a href=""  class="btn btn-success"><i class="ri-checkbox-line"></i> Valider</a></p>
+                        </div>
+                        <div class="iq-card-body">
+                           <div class="row">
+                              <div class="col-sm-8">
+                                 <div class="media-sellers">
+                                    <div class="media-sellers-img">
+                                       <img src="assets/images/logo.png" class="mr-3 rounded" alt="">
+                                    </div>
+                                    <div class="media-sellers-media-info">
+                                       <h5 class="mb-0"><a class="text-dark" href="#">{{parution.premierTitre}}</a></h5>
+                                       <p class="mb-1">{{parution.descPremierTitre}}</p>
+                                       <hr/>
+                                       <h5 class="mb-0"><a class="text-dark" href="#">{{parution.secondTitre}}</a></h5>
+                                       <p class="mb-1">{{parution.descSecondTitre}}</p>
+                                       <div class="sellers-dt">
+                                          <span class="font-size-12">code: <a href="#"> {{parution.code}}</a></span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-2 text-center mt-3">
+                                 <h5 class="mb-0">{{parution.dateParution | date :  "dd/MM/yyyy"}}</h5>
+                                 <span *ngIf="parution.validated==0" class="badge ml-3 badge-pill badge-warning" >Non Validé</span>
+                                 <span *ngIf="parution.validated==1" class="badge ml-3 badge-pill badge-success">Validé</span>
+                              </div>
+                              <div class="col-sm-2 text-center mt-3">
+                               <a href="http://localhost:8080/api/parution/pdf/{{permalink}}" class="btn btn-primary" ><i class="ri-file-download-line"></i> Télecharger</a>
+                               <span *ngIf="parution.published==0" class="badge ml-3 badge-pill badge-danger" >Non Publié</span>
+                                <span *ngIf="parution.published==1" class="badge ml-3 badge-pill badge-success">Publié</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                    </div>
+                    </div>
+        </div>
+      </div>
+  </div>
+</div>

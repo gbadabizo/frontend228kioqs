@@ -1,0 +1,73 @@
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-12 col-lg-12">
+        <div  *ngIf="isfaillure"  class="alert text-white bg-danger" role="alert">
+          <div class="iq-alert-text">Erreur !!!!! Réessayer</div>
+       </div>
+<div class="iq-card">
+  <div class="iq-card-header d-flex justify-content-between bg-success">
+     <div class="iq-header-title">
+        <h4 class="card-title text-white">Modification de la parution N° : {{parution.numParution}}</h4>
+     </div>
+  </div>
+  <div class="iq-card-body bg-light">
+     <p></p>
+     <form [formGroup]="editParutionForm" (ngSubmit)="editParutionSubmit()">
+      <div class="form-row">
+        <div class="col-md-4 mb-2">
+           <label for="validationDefault01">Numéro parution<span class="text-danger">*</span></label>
+           <input type="text" class="form-control" id="validationDefault01" [formControlName]="'numParution'" [(ngModel)]="parution.numParution">
+        </div>
+        <div class="col-md-4 mb-2">
+           <label for="validationDefault02">code<span class="text-danger">*</span></label>
+           <input type="text" class="form-control" readonly id="validationDefault02" [(ngModel)]="parution.code" [formControlName]="'code'">
+        </div>
+        <div class="col-md-4 mb-2">
+          <label for="validationDefault02">Date de parution<span class="text-danger">*</span></label>
+          <input type="date" class="form-control"  id="validationDefault03"  [(ngModel)]="parution.dateParution" [formControlName]="'dateParution'">
+       </div>
+       <div class="col-md-6 mb-3">
+        <label for="validationDefault02">Premier Titre<span class="text-danger">* max(200)</span></label>
+        <input type="text" class="form-control"  id="validationDefault04" [(ngModel)]="parution.premierTitre" [formControlName]="'premierTitre'">
+     </div>
+     <div class="col-md-6 mb-3">
+      <label for="validationDefault02">Second Titre<span class="text-danger">* max(200)</span></label>
+      <input type="text" class="form-control"  id="validationDefault04"  [(ngModel)]="parution.secondTitre" [formControlName]="'secondTitre'">
+   </div>
+     <div class="col-md-6 mb-3">
+       <label for="validationDefault02">Details premier titre<span class="text-danger">* max(250)</span></label>
+       <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"  [(ngModel)]="parution.descPremierTitre" [formControlName]="'descPremierTitre'"></textarea>
+    </div>
+
+   <div class="col-md-6 mb-3">
+     <label for="validationDefault02">Details second titre<span class="text-danger">* max(250)</span></label>
+     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"  [(ngModel)]="parution.descSecondTitre" [formControlName]="'descSecondTitre'"></textarea>
+  </div>
+
+  <div class="form-group col-md-6 mb-3">
+    <label for="validationDefault02">Image de la page de garde<span class="text-danger">*</span></label>
+
+    <div class="custom-file">
+
+      <input type="file" #fileInput ng2FileSelect [uploader]="uploader"   [formControlName]="'imageFile'"  (onFileSelected)="onFileSelectedImage($event)" />
+    </div>
+ </div>
+ <div class="form-group col-md-6 mb-3">
+  <label for="validationDefault02">Fichier PDF de la parution<span class="text-danger">*</span></label>
+
+  <div class="custom-file">
+    <input type="file" #fileInput ng2FileSelect [uploader]="uploader"    class="form-control-file" id="exampleFormControlFile2" [formControlName]="'pdfFile'"  (onFileSelected)="onFileSelectedPDF($event)">
+
+  </div>
+</div>
+      </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!editParutionForm.valid"><i class="ri-save-line"></i> Enregistrer</button>
+
+     </form>
+  </div>
+</div>
+</div>
+</div>

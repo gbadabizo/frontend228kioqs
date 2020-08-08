@@ -1,0 +1,59 @@
+<div id="content-page" class="content-page">
+  <div class="alert text-white bg-danger" role="alert" *ngIf="iserror" >
+    <div class="iq-alert-text">{{message}}</div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <i class="ri-close-line"></i>
+    </button>
+ </div>
+  <div class="container-fluid">
+     <div class="row">
+        <div class="col-sm-12">
+              <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between bg-success">
+                       <div class="iq-header-title">
+                          <h4 class="card-title text-white"> <i class="ri-list-ordered"></i> Liste des abonnées</h4>
+                       </div>
+                    </div>
+                    <div class="iq-card-body bg-light">
+                      <div class="input-group">
+                        <input type="text" class="form-control col-sm-4" [(ngModel)]="searchText"   placeholder="Rechercher un lecteur"/>
+                     </div>
+                     <hr/>
+                       <div class="table-responsive">
+                          <table id="datatable" class="table table-striped table-bordered">
+                   <thead>
+                       <tr>
+                         <th>#</th>
+                           <th>Nom</th>
+                           <th>prenoms</th>
+                           <th>code lecteur</th>
+                           <th>Telephone</th>
+                           <th>Action</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr *ngFor="let l of lecteurs | filter:searchText let i = index " >
+                        <td scope="row">{{i+1}}</td>
+                           <td>{{l.nom}}</td>
+                           <td>{{l.prenoms}}</td>
+                           <td>{{l.code}}</td>
+                           <td>{{l.telephone}}</td>
+                          <td>
+                            <a href="" class="btn btn-primary" style="margin-right:5px;"><i class="ri-list-unordered"></i> Abonnements </a>
+                            <a href="" class="btn btn-success" style="margin-right:5px;"><i class="ri-list-unordered"></i> Transactions </a>
+                            <a href="" class="btn btn-warning" style="margin-right:5px;"><i class="ri-pencil-line" ></i> Désactiver</a>
+                            <a href="" class="btn btn-danger" style="margin-right:5px;"><i class="ri-delete-bin-2-line"></i> </a>
+                          </td>
+                       </tr>
+
+                   </tbody>
+
+               </table>
+                       </div>
+                    </div>
+                 </div>
+        </div>
+     </div>
+
+  </div>
+</div>
