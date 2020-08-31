@@ -1,1 +1,96 @@
-<p>abonnements works!</p>
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-lg-12">
+      <div *ngIf="isSuccessful" class="alert text-white bg-success" role="alert">
+        <div class="iq-alert-text"> <b>Opération effectuée avec succès</b> </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <i class="ri-close-line"></i>
+          </button>
+     </div>
+     <div *ngIf="isFaillure" class="alert text-white bg-danger" role="alert">
+      <div class="iq-alert-text"> <b>Echec erreur de serveur veillez reéssayer</b> </div>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="ri-close-line"></i>
+        </button>
+   </div>
+<div class="iq-card">
+  <div class="iq-card-header d-flex justify-content-between bg-success">
+     <div class="iq-header-title">
+        <h4 class="card-title" style="color: #FFF;"> Formulaire de paramétrage des  abonnements de l'agence : {{nomAgence}}</h4>
+     </div>
+  </div>
+  <div class="iq-card-body bg-light">
+     <p style="color: #FFF;">Définir les abonnements et le montant </p>
+     <form class="form-horizontal" [formGroup]="addAbonnementAgenceForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label class="control-label col-sm-1 align-self-center mb-0" for="email">Periodicité:</label>
+        <div class="col-sm-2">
+          <select class="custom-select" [formControlName]="'idabonnement'">
+            <option>Selectionner la periodicité</option>
+            <option [value]="ab.idabon" *ngFor="let ab of abonnements"> {{ab.libelle}}</option>
+         </select>
+        </div>
+        <label class="control-label col-sm-1 align-self-center mb-0">Montant:</label>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" [formControlName]="'montant'" placeholder="montant">
+      </div>
+      <label class="control-label col-sm-2 align-self-center mb-0">Montant (Hors du pays):</label>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" [formControlName]="'montantext'" placeholder="montant">
+      </div>
+      <div class="col-sm-1">
+        <button type="submit"  [disabled]="!addAbonnementAgenceForm.valid" class="btn btn-success"><i class="ri-save-line"></i>Enregistrer</button>
+      </div>
+     </div>
+     </form>
+  </div>
+</div>
+<hr/>
+<div class="iq-card">
+  <div class="iq-card-header d-flex justify-content-between bg-success">
+     <div class="iq-header-title ">
+        <h4 class="card-title" style="color: #FFF;">Liste des abonnements</h4>
+     </div>
+  </div>
+  <div class="iq-card-body bg-light">
+     <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th>Periodicité</th>
+            <th>Durée</th>
+            <th>Montant</th>
+            <th>Montant exterieur</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+        <tbody>
+           <tr *ngFor="let a of abonnementsAgences   let i = index  " >
+              <th scope="row">{{i+1}}</th>
+              <td>{{a.code}}</td>
+              <td>{{a.abonnement.libelle}}</td>
+              <td>{{a.abonnement.duree}}</td>
+              <td>{{a.montant}}</td>
+              <td>{{a.montantext}}</td>
+              <swal
+                    #deleteSwal
+                    title="Confirmation"
+                    text="Etes- vous sûr de supprimer?"
+                    icon="question"
+                    cancelButtonText="Annuler"
+                    [showCancelButton]="true"
+                    [focusCancel]="true"
+                    (confirm)="delete(a)">
+            </swal>
+              <button class="btn btn-danger" style="margin-right:5px;"  [swal]="deleteSwal" ><i class="ri-delete-bin-2-line"></i> Supprimer</button>
+           </tr>
+        </tbody>
+     </table>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>

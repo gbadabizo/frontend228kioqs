@@ -1,3 +1,4 @@
+import { AbonnementAgence } from './../models/AbonnementAgence';
 import { Agence } from './../models/agence';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +12,7 @@ baseUrl = 'http://localhost:8080/api/agence/'  ;
 baseUrl2 = 'http://localhost:8080/api/parution/' ;
 baseUrl3 = 'http://localhost:8080/api/lecteur/' ;
 baseUrl4 = 'http://localhost:8080/api/rapport/' ;
+baseUrl5 = 'http://localhost:8080/api/abonnement/'
   constructor(private httpClient:HttpClient) { }
 
   getAllCategorie():Observable<any>{
@@ -45,5 +47,24 @@ baseUrl4 = 'http://localhost:8080/api/rapport/' ;
   getAllTransactions(){
     return this.httpClient.get(this.baseUrl4+"transactions/all")
   }
-
+  makeRandom(lengthOfCode: number) {
+    let text = "";
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
+  getAllAbonnements(){
+    return this.httpClient.get(this.baseUrl5+"all");
+  }
+  getAllAbonnementByAgence(id:number){
+    return this.httpClient.get(this.baseUrl5+"agence/"+id);
+  }
+  addagenceAbonnement(agenceAbonnement: AbonnementAgence){
+      return this.httpClient.post(this.baseUrl5+"add", agenceAbonnement);
+  }
+ deleteAgenceAbn(id:number){
+  return this.httpClient.get(this.baseUrl5+"delete/"+id);
+}
 }

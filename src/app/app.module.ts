@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +50,7 @@ import { AbonnementsComponent } from './abonnements/abonnements.component';
     ReactiveFormsModule,
     HttpClientModule,
     FileUploadModule,
+    SweetAlert2Module.forRoot(),
     RouterModule.forRoot(
       [
         {path:'', component: HomeComponent},
@@ -62,7 +64,7 @@ import { AbonnementsComponent } from './abonnements/abonnements.component';
         {path:'parutions/:id', component: ParutionsComponent},
         {path:'detail-parution/:id', component: DetailParutionComponent},
         {path:'edit-parution/:id', component: EditParutionComponent},
-        {path:'abonnements/:id', component: AbonnementsComponent},
+        {path:'abonnements/:id/:nom', component: AbonnementsComponent},
       ]
     )
   ],
