@@ -1,0 +1,94 @@
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+    <div class="col d-flex flex-column align-items-start">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Admin</a>
+          </li>
+          <li class="breadcrumb-item"><a href="#">job-Categorie</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Liste</li>
+        </ol>
+      </nav>
+    </div>
+    <hr/>
+    <div *ngIf="success" class="alert bg-success alert-dismissible fade show" role="alert" style="color: #FFFFFF;">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="ri-close-circle-line"></i>
+        </span>
+      </button>
+    </div>
+    <div *ngIf="failure" class="alert bg-danger alert-dismissible fade show" role="alert" style="color: #FFFFFF;">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="ri-close-circle-line"></i>
+        </span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-lg-5 col-md-5">
+
+        <div class="iq-card">
+          <div class="iq-card-header d-flex justify-content-between bg-primary">
+            <div class="iq-header-title">
+              <h4 class="card-title text-white"> <i class="ri-list-ordered"></i> Ajouter une categorie d'emploi</h4>
+            </div>
+          </div>
+          <div class="iq-card-body bg-light">
+            <form [formGroup]="categForm" (ngSubmit)="onSubmit()">
+              <div class="d-flex flex-column flex-sm-row form-group">
+                <input class="form-control mr-sm-2 mb-2 mb-sm-0 w-auto flex-grow-1" [formControlName]="'libelle'"
+                  placeholder="libelle categorie" type="text">
+                <input class="form-control mr-sm-2 mb-2 mb-sm-0 w-auto flex-grow-1" [formControlName]="'description'"
+                  placeholder="description categorie" type="text">
+                <button type="submit" class="btn btn-primary btn-sm" [disabled]="!categForm.valid">
+                  <i class="ri-add-circle-line"></i>
+                  <span>Ajouter</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        <div class="col-lg-7 col-md-7">
+          <div class="iq-card">
+            <div class="iq-card-header d-flex justify-content-between bg-success">
+              <div class="iq-header-title">
+                <h4 class="card-title text-white"> <i class="ri-list-ordered"></i> Liste des categories d'emploi</h4>
+              </div>
+            </div>
+            <div class="iq-card-body bg-light">
+
+              <table class="table table-striped table-bordered bg-primary-2" style="color: #FFFFFF;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Descriptions</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of categs let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{c.libelle}}</td>
+                    <td>{{c.description}}</td>
+                    <td>
+                      <a href="" class="btn btn-info btn-sm" style="margin-right:3px;"><i
+                          class="ri-pencil-line"></i></a>
+                      <a href="" class="btn btn-danger  btn-sm"><i class="ri-delete-bin-2-line"></i> </a>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,15 @@ import { DetailParutionComponent } from './detail-parution/detail-parution.compo
 import { LecteurComponent } from './lecteur/lecteur.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { AbonnementsComponent } from './abonnements/abonnements.component';
+import { JobsComponent } from './jobs/jobs.component';
+import { JobcategorieComponent } from './jobcategorie/jobcategorie.component';
+import { AddJobComponent } from './add-job/add-job.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { DetailJobComponent } from './detail-job/detail-job.component';
+import { NewsComponent } from './news/news.component';
+import { AddNewsComponent } from './add-news/add-news.component';
+import { PubliciteComponent } from './publicite/publicite.component';
+import { AddPubComponent } from './add-pub/add-pub.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +50,15 @@ import { AbonnementsComponent } from './abonnements/abonnements.component';
     DetailParutionComponent,
     LecteurComponent,
     TransactionsComponent,
-    AbonnementsComponent
+    AbonnementsComponent,
+    JobsComponent,
+    JobcategorieComponent,
+    AddJobComponent,
+    DetailJobComponent,
+    NewsComponent,
+    AddNewsComponent,
+    PubliciteComponent,
+    AddPubComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +68,8 @@ import { AbonnementsComponent } from './abonnements/abonnements.component';
     ReactiveFormsModule,
     HttpClientModule,
     FileUploadModule,
+    EditorModule,
+    NgMultiSelectDropDownModule.forRoot(),
     SweetAlert2Module.forRoot(),
     RouterModule.forRoot(
       [
@@ -58,8 +78,16 @@ import { AbonnementsComponent } from './abonnements/abonnements.component';
         {path:'home', component: HomeComponent},
         {path:'transactions', component: TransactionsComponent},
         {path:'add-agence', component: AddAgenceComponent},
+        {path:'add-news', component: AddNewsComponent},
+        {path:'news', component: NewsComponent},
         {path:'agences', component: AgencesComponent},
         {path:'lecteur', component: LecteurComponent},
+        {path:'job-categorie', component: JobcategorieComponent},
+        {path:'add-job', component: AddJobComponent},
+        {path:'publicites', component: PubliciteComponent},
+        {path:'add-pub', component: AddPubComponent},
+        {path:'detail-job/:id', component: DetailJobComponent},
+        {path:'jobs', component: JobsComponent},
         {path:'add-parution/:id', component: AddParutionComponent},
         {path:'parutions/:id', component: ParutionsComponent},
         {path:'detail-parution/:id', component: DetailParutionComponent},

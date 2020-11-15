@@ -1,0 +1,134 @@
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+    <div class="col d-flex flex-column align-items-start">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Admin</a>
+          </li>
+          <li class="breadcrumb-item"><a href="#">Jobs</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+        </ol>
+      </nav>
+    </div>
+    <div *ngIf="success" class="alert bg-success alert-dismissible fade show" role="alert"
+      style="color: #FFFFFF;">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="ri-close-circle-line"></i>
+        </span>
+      </button>
+    </div>
+    <div *ngIf="failure" class="alert bg-danger alert-dismissible fade show" role="alert" style="color: #FFFFFF;">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="ri-close-circle-line"></i>
+        </span>
+      </button>
+    </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+
+          <div style="margin-bottom: 20px;">
+            <div class="iq-card">
+              <div class="iq-card-header d-flex justify-content-between bg-success">
+                <div class="iq-header-title">
+                  <h4 class="card-title text-white"> <i class="ri-list-ordered"></i> Ajouter un news ou un event</h4>
+                </div>
+              </div>
+              <div class="iq-card-body bg-light">
+            <form [formGroup]="addNewsForm" (ngSubmit)="addNewsSubmit()">
+              <div class="form-row">
+                <div class="col-md-9 mb-2">
+                  <label for="validationDefault01">Titre<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="validationDefault01" [formControlName]="'titre'">
+                </div>
+                <div class="col-md-3 mb-2">
+                  <label for="validationDefault02">Date de Publication<span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" id="validationDefault03" [formControlName]="'datePublication'">
+                </div>
+
+                <div class="col-md-6 mb-6">
+                  <label for="validationDefault02">Source<span class="text-danger"></span></label>
+                  <input class="form-control" [formControlName]="'source'" />
+                </div>
+                <div class="col-md-6 mb-6">
+                  <label for="validationDefault02">Url Video<span class="text-danger"></span></label>
+                  <input class="form-control" [formControlName]="'urlVideo'" />
+                </div>
+                <div class="col-md-12 mb-6">
+                  <label for="validationDefault02">Contenu<span class="text-danger">*</span></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" [formControlName]="'contenu'" rows="5"></textarea>
+
+                <!--<editor [formControlName]="'contenu'" [init]="{plugins: 'link'}"></editor>-->
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                  <label for="validationDefault02">Image de garde<span class="text-danger">*</span></label>
+
+                  <div class="custom-file">
+
+                    <input type="file" #fileInput ng2FileSelect [uploader]="uploader" [formControlName]="'imageFile'"
+                      (onFileSelected)="onFileSelectedImage($event)" />
+                  </div>
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                  <label for="validationDefault02">Fichier PDF</label>
+                  <div class="custom-file">
+                    <input type="file" #fileInput ng2FileSelect [uploader]="uploader" class="form-control-file"
+                      id="exampleFormControlFile2" [formControlName]="'pdfFile'"
+                      (onFileSelected)="onFileSelectedPDF($event)">
+                  </div>
+                </div>
+                <div class="form-group col-md-3 mb-1">
+                  <label for="validationDefault02">Image 1</label>
+
+                  <div class="custom-file">
+
+                    <input type="file" #fileInput ng2FileSelect [uploader]="uploader" [formControlName]="'imageFile1'"
+                      (onFileSelected)="onFileSelectedImage1($event)" />
+                  </div>
+                </div>
+                <div class="form-group col-md-3 mb-1">
+                  <label for="validationDefault02">Image2</label>
+
+                  <div class="custom-file">
+
+                    <input type="file" #fileInput ng2FileSelect [uploader]="uploader" [formControlName]="'imageFile2'"
+                      (onFileSelected)="onFileSelectedImage2($event)" />
+                  </div>
+                </div>
+                <div class="form-group col-md-3 mb-1">
+                  <label for="validationDefault02">Image 3 </label>
+
+                  <div class="custom-file">
+
+                    <input type="file" #fileInput ng2FileSelect [uploader]="uploader" [formControlName]="'imageFile3'"
+                      (onFileSelected)="onFileSelectedImage3($event)" />
+                  </div>
+                </div>
+                <div class="form-group col-md-3 mb-1">
+                  <label for="validationDefault02">Image 4 </label>
+
+                  <div class="custom-file">
+
+                    <input type="file" #fileInput ng2FileSelect [uploader]="uploader" [formControlName]="'imageFile4'"
+                      (onFileSelected)="onFileSelectedImage4($event)" />
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-success btn-sm" [disabled]="!addNewsForm.valid"><i
+                  class="ri-save-line"></i> Enregistrer</button>
+
+            </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

@@ -1,0 +1,63 @@
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+    <div class=" card card-body flex-sm-row justify-content-between align-items-center" style="margin-bottom: 10px;">
+      <div class="h5 mb-sm-0">Partager cette offre:</div>
+      <div class="d-flex">
+        <a href="#" class="btn btn-sm btn-primary ">
+          <i class="ri-facebook-box-fill"></i> Facebook
+        </a>
+        <a href="#" class="btn btn-sm btn-primary" style="margin-left: 5px;">
+          <i class="ri-linkedin-box-fill"></i> Linkedin
+        </a>
+      </div>
+    </div>
+    <div class="row align-items-start justify-content-around">
+      <div class="col-md-9 col-lg col-xl-4 sticky-lg-top mb-5 mb-lg-0">
+        <ul class="list-group pr-xl-4">
+          <li class="list-group-item px-4 py-3 d-flex justify-content-between">
+            <h6 class="mb-0">Catégorie d'emploi</h6>
+            <div>{{job.libcategorie}}</div>
+          </li>
+          <li class="list-group-item px-4 py-3 d-flex justify-content-between">
+            <h6 class="mb-0">Date de cloture</h6>
+            <div class="badge badge-warning badge-pill">{{job.datecloture |  date:'dd/MM/yyyy'}}</div>
+
+          </li>
+          <li class="list-group-item px-4 py-3 d-flex justify-content-between">
+            <h6 class="mb-0">Type de contrat</h6>
+            <div>{{job.typecontrat}}</div>
+          </li>
+          <li class="list-group-item px-4 py-3 d-flex justify-content-between">
+            <h6 class="mb-0">Pays</h6>
+            <div>{{job.pays}}</div>
+          </li>
+
+        </ul>
+
+       <ul class="list-group pr-xl-4" style="margin-top: 10px;">
+        <li class="list-group-item px-4 py-3 d-flex justify-content-between bg-primary-2" *ngFor="let j of jobs" >
+          <a  *ngIf="j.idjobs!=job.idjobs"  href="{{'detail-job/'+j.idjobs}}">
+          <h6 class="mb-0" style="color: #FFFFFF;">{{j.titre}}</h6>
+          <div  class="badge badge-danger badge-pill"> Date limite :{{job.datecloture |  date:'dd/MM/yyyy'}}</div>
+          </a>
+        </li>
+       </ul>
+       <br/>
+       <div style="margin-right: 19px;">
+        <img class="card-img-top hover-fade-out" src="{{'http://localhost:8080/api/job/image/' +job.idjobs}}" alt="Image accompanying Circle testimonial">
+       </div>
+
+
+      </div>
+      <div class="col-xl-7 col-lg-8 col-md-9">
+        <article class="article">
+          <h3 class="h2">{{job.titre}}</h3>
+          <p [innerHTML]="job.description"></p>
+
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+
